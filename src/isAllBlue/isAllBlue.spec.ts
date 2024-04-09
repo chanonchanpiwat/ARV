@@ -1,4 +1,4 @@
-import { isAllBlue } from './isAllBlue';
+import { isAllBlue, isAllBlueIdxMoreThanArray } from './isAllBlue';
 
 /*
 There is a room with n bulbs, numbered from 1 to n, arranged in a row from left to right. Initially, all the bulbs are turned off.
@@ -64,6 +64,36 @@ describe('test', () => {
   it('Example 5', () => {
     const example = [1, 2, 3, 4, 5];
     const result = isAllBlue(example);
+    expect(result).toBe(5);
+  });
+
+  it('Example 1.', () => {
+    const example = [2, 1, 3, 5, 4];
+    const result = isAllBlueIdxMoreThanArray(example);
+    expect(result).toBe(3);
+  });
+
+  it('Example 2.', () => {
+    const example = [3, 2, 4, 1, 5];
+    const result = isAllBlueIdxMoreThanArray(example);
+    expect(result).toBe(2);
+  });
+
+  it('Example 3.', () => {
+    const example = [5, 1, 2, 3, 4];
+    const result = isAllBlueIdxMoreThanArray(example);
+    expect(result).toBe(1);
+  });
+
+  it('Example 4.', () => {
+    const example = [2, 1, 4, 3, 5];
+    const result = isAllBlueIdxMoreThanArray(example);
+    expect(result).toBe(3);
+  });
+
+  it('Example 5.', () => {
+    const example = [1, 2, 3, 4, 5];
+    const result = isAllBlueIdxMoreThanArray(example);
     expect(result).toBe(5);
   });
 });

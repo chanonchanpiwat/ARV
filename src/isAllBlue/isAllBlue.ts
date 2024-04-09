@@ -40,3 +40,41 @@ export const isAllBlue = (bulbsIdx: number[]): number => {
 
   return countAllBlue;
 };
+
+export const isAllBlueIdxMoreThanArray = (bulbsIdx: number[]): number => {
+  let countAllBlue = 0;
+  let currentlyTurnOn = 0;
+  const maxLength = Math.max(...bulbsIdx);
+  const bulbs = Array(maxLength).fill(Status.Off);
+
+  for (const e of bulbsIdx) {
+    currentlyTurnOn += 1;
+    bulbs[e - 1] = Status.On;
+
+    const currentIdx = e - 1;
+
+    const prev = currentIdx - 1 >= 0 ? currentIdx - 1 : null;
+    let future = currentIdx + 1 <= maxLength - 1 ? currentIdx + 1 : null;
+
+    if (prev === null || bulbs[prev] == Status.Blue) {
+      currentlyTurnOn -= 1;
+      bulbs[e - 1] = Status.Blue;
+
+      while (
+        future !== null &&
+        future <= maxLength - 1 &&
+        bulbs[future] == Status.On
+      ) {
+        currentlyTurnOn -= 1;
+        bulbs[future] = Status.Blue;
+        future += 1;
+      }
+
+      if (currentlyTurnOn == 0) {
+        countAllBlue += 1;
+      }
+    }
+  }
+
+  return countAllBlue;
+};
