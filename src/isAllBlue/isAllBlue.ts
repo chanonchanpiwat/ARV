@@ -18,7 +18,7 @@ export const isAllBlue = (bulbsIdx: number[]): number => {
     const prev = currentIdx - 1 >= 0 ? currentIdx - 1 : null;
     let future = currentIdx + 1 <= bulbsIdx.length - 1 ? currentIdx + 1 : null;
 
-    if (prev == null || bulbs[prev] == Status.Blue) {
+    if (prev === null || bulbs[prev] == Status.Blue) {
       currentlyTurnOn -= 1;
       bulbs[e - 1] = Status.Blue;
 
